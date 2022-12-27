@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jeremy Mullis</title>
+  <style>
+    .vortex {
+      position: absolute;
+      z-index: -1;
+      top: 0;
+      right: 0;
+      left: 0;
+      bottom: 0;
+      animation-name: cycle;
+      animation-timing-function: linear;
+      animation-duration: 1s;
+      animation-iteration-count: infinite;
+      background-image: radial-gradient(red, yellow);
+    }
+
+    .seizure-mode .vortex {
+      animation-duration: .1s;
+    }
+
+    .container {
+      position: absolute;
+      display: flex;
+      top: 0;
+      right: 0;
+      left: 0;
+      bottom: 0;
+      justify-content: center;
+      align-items: center;
+      display: absolute;
+      flex-direction: column;
+    }
+
+    .monetization {}
+
+    .controls {
+      position: absolute;
+      bottom: 5px;
+      right: 5px;
+    }
+
+    .head {
+      animation-name: pulse;
+      animation-duration: 2s;
+      animation-iteration-count: infinite;
+      animation-direction: alternate;
+      cursor: pointer;
+    }
+
+    .seizure-mode .head {
+      animation-duration: 5s;
+    }
+
+    .marquee {
+      font-size: x-large;
+      font-family: 'Comic Sans', cursive;
+    }
+
+    .button {
+      background-color: transparent;
+      border: none;
+      width: 3rem;
+      height: 3rem;
+      cursor: pointer;
+      color: greenyellow;
+      line-height: 0;
+      display: block;
+    }
+
+    .button svg {
+      display: block;
+    }
+
+    @keyframes cycle {
+      0% {
+        filter: hue-rotate(0deg);
+      }
+
+      100% {
+        filter: hue-rotate(-360deg)
+      }
+    }
+
+    @keyframes pulse {
+      0% {
+        transform: scale(1);
+      }
+
+      100% {
+        transform: scale(1.2);
+      }
+    }
+
+    .hidden {
+      display: none;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="vortex"></div>
+  <div class="container">
+    <img alt="crude cut out of a man's head wearing sunglasses" id="jeremy" class="head" src="./jeremy.gif" />
+    <marquee class="marquee">&#9972; Thank you for visiting my website &#9972;</marquee>
+  </div>
+  <div class="controls">
+    <button title="Toggle Seizure Mode" id="seizure-button" class="button">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM7 9a1 1 0 100-2 1 1 0 000 2zm7-1a1 1 0 11-2 0 1 1 0 012 0zm-7.536 5.879a1 1 0 001.415 0 3 3 0 014.242 0 1 1 0 001.415-1.415 5 5 0 00-7.072 0 1 1 0 000 1.415z" clip-rule="evenodd" />
+      </svg>
+    </button>
+  </div>
+  <audio id="honk">
+    <source src="honk.ogg" type="audio/ogg">
+    <source src="honk.mp3" type="audio/mpeg">
+  </audio>
+  <div class="monitization">
+    <script type="text/javascript">
+      amzn_assoc_placement = "adunit0";
+      amzn_assoc_tracking_id = "jeremymullis-20";
+      amzn_assoc_ad_mode = "manual";
+      amzn_assoc_ad_type = "smart";
+      amzn_assoc_marketplace = "amazon";
+      amzn_assoc_region = "US";
+      amzn_assoc_linkid = "a85395a6449f62c35c5d5caaae4793ef";
+      amzn_assoc_design = "in_content";
+      amzn_assoc_asins = "B089N99BCT,B001STX13U,B01I9BZ0TW,B07BS3HWHR";
+    </script>
+    <script src="//z-na.amazon-adsystem.com/widgets/onejs?MarketPlace=US"></script>
+    <a class="hidden" rel="me" href="https://home.social/@drdogbot7">Mastodon</a>
+  </div>
+
+  <script>
+    const jeremy = document.querySelector('#jeremy');
+    const honk = document.querySelector('#honk');
+    const seizureButton = document.querySelector('#seizure-button')
+
+    function playSound() {
+      honk.play();
+      window.navigator.vibrate(200);
+    }
+
+    function toggleSeizure() {
+      document.body.classList.toggle('seizure-mode');
+    }
+
+    jeremy.addEventListener('click', playSound)
+    seizureButton.addEventListener('click', toggleSeizure)
+
+  </script>
+</body>
+
+</html>
